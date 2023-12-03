@@ -1,5 +1,3 @@
-import React from "react";
-
 const CrackerOpened = () => {
   return (
     <div
@@ -18,32 +16,60 @@ const CrackerOpened = () => {
       />
       <div
         style={{
-          position: "absolute",
-          left: "10%",
-          top: "52.5%",
-          height: "30%",
-          width: "80%",
-          transform: "translateY(-50%)",
-          backgroundImage: `url("/Images/WebP/joke_box.webp")`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "contain",
-          display : 'flex',
-          flexDirection : 'column',
+          position: "relative",
+          height: "35%",
+          width: "100%",
+          transform: "translateY(-180%)",
+          display: "flex",
+          flexDirection: "column",
         }}
       >
-        <p style={{ color: "red", }}>
+        <img
+          style={{
+            position: "absolute",
+            inset: "0",
+            left: "5%",
+            width: "90%",
+            height:'100%'
+          }}
+          src={"/Images/WebP/joke_box.webp"}
+          alt="joke box"
+        />
+        <p
+          style={{
+            color: "red",
+            position: "absolute",
+            top: 0,
+            left: "10%",
+            width: "40%",
+            fontSize: '2vw'
+          }}
+        >
           Why do reindeers like Beyonce so much?
         </p>
-        <p style={{ color: "black",}}>
+        <p
+          style={{
+            color: "black",
+            position: "absolute",
+            top:'50%',
+            left: "40%",
+            width: "40%",
+            fontSize: '2vw'
+          }}
+        >
           She sleighs
         </p>
-        <div >
-          <img
-            style={{ width: "25%",  }}
-            src="/Images/SVG/share_btn.svg"
-            alt="share button"
-          />
-        </div>
+        <img
+          style={{
+            width: "25%",
+
+            position: "absolute",
+            bottom: '10%',
+            right: "8%",
+          }}
+          src="/Images/SVG/share_btn.svg"
+          alt="share button"
+        />
       </div>
     </div>
   );

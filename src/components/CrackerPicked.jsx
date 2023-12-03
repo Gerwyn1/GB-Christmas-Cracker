@@ -1,6 +1,4 @@
 /* eslint-disable react/prop-types */
-import React from "react";
-import pop from "/Images/SVG/pop_r_bg.svg";
 
 // eslint-disable-next-line no-unused-vars
 const CrackerPicked = ({ setStage, color }) => {
@@ -22,7 +20,6 @@ const CrackerPicked = ({ setStage, color }) => {
       />
       <img
         src={`/Images/WebP/pop_${color?.split("").slice(0, 1)}.webp`}
-        // src={pop}
         alt="cracker"
         style={{
           position: "absolute",
