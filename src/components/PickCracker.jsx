@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 /* eslint-disable react/no-unknown-property */
 
 // eslint-disable-next-line react/prop-types
@@ -6,6 +8,37 @@ const PickCracker = ({ setStage, setColor }) => {
     // Handle click for the hotspot with the given ID
     console.log(`Hotspot ${hotspotId} clicked`);
   };
+
+  useEffect(() => {
+    function updateImageMap() {
+      const originalWidth = 1081;
+      const originalHeight = 1921;
+      const newWidth = document.getElementById("resizable-image").width;
+      const newHeight = document.getElementById("resizable-image").height;
+
+      const areas = document.querySelectorAll('map[name="image-map"] area');
+      areas.forEach((area) => {
+        const originalCoords = area
+          .getAttribute("coords")
+          .split(",")
+          .map(Number);
+        const newCoords = originalCoords.map((coord, index) => {
+          return index % 2 === 0
+            ? (coord / originalWidth) * newWidth
+            : (coord / originalHeight) * newHeight;
+        });
+        area.setAttribute("coords", newCoords.join(","));
+      });
+    }
+
+    window.addEventListener("resize", updateImageMap);
+    window.addEventListener("load", updateImageMap);
+
+    return () => {
+      window.removeEventListener("resize", updateImageMap);
+      window.removeEventListener("load", updateImageMap);
+    };
+  }, []);
 
   return (
     <div
@@ -16,6 +49,7 @@ const PickCracker = ({ setStage, setColor }) => {
     >
       <img
         src="/Images/WebP/cover_bg.webp"
+        id="resizable-image"
         style={{
           position: "relative",
           height: "100%",
