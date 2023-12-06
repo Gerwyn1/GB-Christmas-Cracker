@@ -4,9 +4,11 @@ import PickCracker from "./components/PickCracker";
 import CrackerPicked from "./components/CrackerPicked";
 import CrackerOpened from "./components/CrackerOpened";
 
+
 function App() {
   const [stage, setStage] = useState("pick a cracker");
   const [color, setColor] = useState(null)
+  
   return (
     <>
       {stage === "pick a cracker" ? (

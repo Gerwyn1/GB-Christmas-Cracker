@@ -9,36 +9,38 @@ const PickCracker = ({ setStage, setColor }) => {
     console.log(`Hotspot ${hotspotId} clicked`);
   };
 
-  useEffect(() => {
-    function updateImageMap() {
-      const originalWidth = 1081;
-      const originalHeight = 1921;
-      const newWidth = document.getElementById("resizable-image").width;
-      const newHeight = document.getElementById("resizable-image").height;
+ 
 
-      const areas = document.querySelectorAll('map[name="image-map"] area');
-      areas.forEach((area) => {
-        const originalCoords = area
-          .getAttribute("coords")
-          .split(",")
-          .map(Number);
-        const newCoords = originalCoords.map((coord, index) => {
-          return index % 2 === 0
-            ? (coord / originalWidth) * newWidth
-            : (coord / originalHeight) * newHeight;
-        });
-        area.setAttribute("coords", newCoords.join(","));
-      });
-    }
+  // useEffect(() => {
+  //   function updateImageMap() {
+  //     const originalWidth = 1081;
+  //     const originalHeight = 1921;
+  //     const newWidth = document.getElementById("resizable-image").width;
+  //     const newHeight = document.getElementById("resizable-image").height;
 
-    window.addEventListener("resize", updateImageMap);
-    window.addEventListener("load", updateImageMap);
+  //     const areas = document.querySelectorAll('map[name="image-map"] area');
+  //     areas.forEach((area) => {
+  //       const originalCoords = area
+  //         .getAttribute("coords")
+  //         .split(",")
+  //         .map(Number);
+  //       const newCoords = originalCoords.map((coord, index) => {
+  //         return index % 2 === 0
+  //           ? (coord / originalWidth) * newWidth
+  //           : (coord / originalHeight) * newHeight;
+  //       });
+  //       area.setAttribute("coords", newCoords.join(","));
+  //     });
+  //   }
 
-    return () => {
-      window.removeEventListener("resize", updateImageMap);
-      window.removeEventListener("load", updateImageMap);
-    };
-  }, []);
+  //   window.addEventListener("resize", updateImageMap);
+  //   window.addEventListener("load", updateImageMap);
+
+  //   return () => {
+  //     window.removeEventListener("resize", updateImageMap);
+  //     window.removeEventListener("load", updateImageMap);
+  //   };
+  // }, []);
 
   return (
     <div
@@ -57,6 +59,7 @@ const PickCracker = ({ setStage, setColor }) => {
         }}
         useMap="#image-map"
       />
+      {/* <div style={{ position: "absolute", inset: 0 }}> */}
       <map name="image-map">
         <area
           target="_self"
@@ -120,6 +123,7 @@ const PickCracker = ({ setStage, setColor }) => {
           }}
         />
       </map>
+      {/* </div> */}
     </div>
 
     // <div
