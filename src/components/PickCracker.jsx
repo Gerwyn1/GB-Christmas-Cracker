@@ -8,40 +8,7 @@ const PickCracker = ({ setStage, setColor }) => {
     // Handle click for the hotspot with the given ID
     console.log(`Hotspot ${hotspotId} clicked`);
   };
-
- 
-
-  // useEffect(() => {
-  //   function updateImageMap() {
-  //     const originalWidth = 1081;
-  //     const originalHeight = 1921;
-  //     const newWidth = document.getElementById("resizable-image").width;
-  //     const newHeight = document.getElementById("resizable-image").height;
-
-  //     const areas = document.querySelectorAll('map[name="image-map"] area');
-  //     areas.forEach((area) => {
-  //       const originalCoords = area
-  //         .getAttribute("coords")
-  //         .split(",")
-  //         .map(Number);
-  //       const newCoords = originalCoords.map((coord, index) => {
-  //         return index % 2 === 0
-  //           ? (coord / originalWidth) * newWidth
-  //           : (coord / originalHeight) * newHeight;
-  //       });
-  //       area.setAttribute("coords", newCoords.join(","));
-  //     });
-  //   }
-
-  //   window.addEventListener("resize", updateImageMap);
-  //   window.addEventListener("load", updateImageMap);
-
-  //   return () => {
-  //     window.removeEventListener("resize", updateImageMap);
-  //     window.removeEventListener("load", updateImageMap);
-  //   };
-  // }, []);
-
+  
   return (
     <div
       style={{
@@ -60,13 +27,14 @@ const PickCracker = ({ setStage, setColor }) => {
         useMap="#image-map"
       />
       {/* <div style={{ position: "absolute", inset: 0 }}> */}
-      <map name="image-map">
+
+      <map useMap="image-map">
         <area
           target="_self"
           alt="house"
           title="house"
           href="/"
-          coords="0,794,160,975"
+          coords="1,795,212,989"
           shape="rect"
           onClick={(event) => {
             event.preventDefault();
@@ -76,53 +44,45 @@ const PickCracker = ({ setStage, setColor }) => {
         />
         <area
           target="_self"
-          alt="house"
-          title="house"
+          alt="text-1"
+          title="text-1"
           href="/"
-          coords="168,802,236,903,208,905,208,995,157,983,124,977,106,976,164,794"
-          shape="poly"
-          onClick={(event) => {
-            event.preventDefault();
-            handleHotspotClick("house");
-          }}
-        />
-        <area
-          target=""
-          alt="text"
-          title="text"
-          href="/"
-          coords="143,122,196,123,344,114,496,187,473,223,98,222,104,180,95,196,94,208,137,155"
-          shape="poly"
-          onClick={(event) => {
-            event.preventDefault();
-            handleHotspotClick("text");
-          }}
-        />
-        <area
-          target=""
-          alt="text"
-          title="text"
-          href="/"
-          coords="191,353,840,421"
+          coords="91,113,502,224"
           shape="rect"
           onClick={(event) => {
             event.preventDefault();
-            handleHotspotClick("text");
+
+            handleHotspotClick("text-1");
           }}
         />
         <area
-          target=""
-          alt="text"
-          title="text"
+          target="_self"
+          alt="text-2"
+          title="text-2"
           href="/"
-          coords="182,353,211,280,224,278,251,272,274,262,299,260,312,260,320,259,454,230,462,251,596,327,587,353,351,350,182,353"
-          shape="poly"
+          coords="178,270,850,425"
+          shape="rect"
           onClick={(event) => {
             event.preventDefault();
-            handleHotspotClick("text");
+
+            handleHotspotClick("text-2");
+          }}
+        />
+        <area
+          target="_self"
+          alt="text-3"
+          title="text-3"
+          href="/"
+          coords="436,435,1001,597"
+          shape="rect"
+          onClick={(event) => {
+            event.preventDefault();
+
+            handleHotspotClick("text-3");
           }}
         />
       </map>
+
       {/* </div> */}
     </div>
 

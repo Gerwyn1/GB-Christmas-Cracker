@@ -36,7 +36,7 @@ const CrackerPicked = ({ setStage, color }) => {
         }}
         onClick={() => setStage("cracker opened")}
       />
-      
+
     </div>
   );
 };
