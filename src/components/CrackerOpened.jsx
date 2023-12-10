@@ -21,6 +21,7 @@ let jokes = [
     Q: "Why do gardeners always carry a pencil and paper during the holidays?",
     A: "In case they want to draw their Christmas plants!",
   },
+
   {
     Q: "What's a gardener's favourite Christmas carol?",
     A: '"Silent Nightshade."',
@@ -61,6 +62,7 @@ let jokes = [
     Q: "What do you call a snowman in the Gardens by the Bay flower dome?",
     A: "A frosty botanist!",
   },
+  //
   {
     Q: "What did the gardener say to the weeds on Christmas Day?",
     A: "\"You're not welcome here – it's the season of goodwill, not weed-will!\"",
@@ -83,12 +85,14 @@ let jokes = [
   },
 ];
 const CrackerOpened = () => {
-  const jokesIdx = Math.floor(Math.random() * jokes.length);
-  const jokeQuestion = jokes[jokesIdx].Q;
-  const jokeAnswer = jokes[jokesIdx].A;
-  const jokeAnswLength = jokeAnswer.split(" ").length;
+  const jokesIdx = Math.floor(Math.random() * jokes.length) + 1;
+  // const jokeQuestion = jokes[jokesIdx].Q;
+  // const jokeAnswer = jokes[jokesIdx].A;
+  // const jokeAnswLength = jokeAnswer.split(" ").length;
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  console.log(jokes.length);
 
   useEffect(() => {
     const handleResize = () => {
@@ -115,80 +119,19 @@ const CrackerOpened = () => {
           position: "relative",
           height: "100%",
           width: "100%",
+          filter: "brightness(.7)",
         }}
       />
-      <div
+      <img
         style={{
-          position: "relative",
-          height: `${windowWidth < 768 ? "35%" : "40%"}`,
+          position: "absolute",
           width: "90%",
-          transform: "translateY(-180%)",
-          display: "flex",
-          flexDirection: "column",
-          overflow: "hidden",
-          margin: "auto",
+          left: "5%",
+          top: "50%",
+          transform: "translateY(-50%)",
         }}
-      >
-        <img
-          style={{
-            position: "absolute",
-            inset: "0",
-            left: "5%",
-            width: "90%",
-            height: "100%",
-          }}
-          src={"/Images/WebP/joke_box.webp"}
-          alt="joke box"
-        />
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            left: "5%",
-            right: "5%",
-          }}
-        >
-          {/* JOKE TEXTS (1) */}
-          <p
-            style={{
-              margin: `${windowWidth >= 768 ? "1rem" : ".5rem"}`,
-              paddingTop: `${windowWidth >= 768 ? "1rem" : "0"}`,
-              textAlign: "center",
-              color: "red",
-              width: "62.5%",
-              lineHeight: 1,
-              height: "30%",
-              marginBottom: '.25rem'
-            }}
-          >
-            {jokeQuestion}
-          </p>
-          {/* JOKE TEXTS (2) */}
-          <p
-            style={{
-              color: "black",
-              width: `${jokeAnswLength <= 7 ? "57.5%" : "64%"}`,
-              lineHeight: 1,
-              marginLeft: "auto",
-              height: "30%",
-              marginRight: '1rem',
-              marginTop: `${windowWidth >= 768 ? "0" : "1rem"}`,
-            }}
-          >
-            {jokeAnswer}
-          </p>
-          <img
-            style={{
-              width: "25%",
-              position: "absolute",
-              bottom: "10%",
-              right: "8%",
-            }}
-            src="/Images/SVG/share_btn.svg"
-            alt="share button"
-          />
-        </div>
-      </div>
+        src={`/public/joke_img/joke_${jokesIdx}.png`}
+      />
     </div>
   );
 };
