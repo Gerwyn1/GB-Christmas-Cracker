@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
-
-const jokes = [
+export const jokes = [
   {
     Q: "Why did the scarecrow win an award at Gardens by the Bay?",
     A: "Because he was outstanding in his field!",
@@ -62,7 +60,6 @@ const jokes = [
     Q: "What do you call a snowman in the Gardens by the Bay flower dome?",
     A: "A frosty botanist!",
   },
-  //
   {
     Q: "What did the gardener say to the weeds on Christmas Day?",
     A: "\"You're not welcome here – it's the season of goodwill, not weed-will!\"",
@@ -84,55 +81,3 @@ const jokes = [
     A: 'It wanted to be in a "circular" motion picture!',
   },
 ];
-const CrackerOpened = () => {
-  const jokesIdx = Math.floor(Math.random() * jokes.length) + 1;
-  // const jokeQuestion = jokes[jokesIdx].Q;
-  // const jokeAnswer = jokes[jokesIdx].A;
-  // const jokeAnswLength = jokeAnswer.split(" ").length;
-
-  // const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     setWindowWidth(window.innerWidth);
-  //   };
-
-  //   window.addEventListener("resize", handleResize);
-
-  //   return () => {
-  //     window.removeEventListener("resize", handleResize);
-  //   };
-  // }, []);
-
-  return (
-    <div
-      style={{
-        position: "relative",
-        height: "100vh",
-      }}
-    >
-      <img
-        src="/public/Images/WebP/joke_bg.webp"
-        style={{
-          position: "relative",
-          height: "100%",
-          width: "100%",
-          filter: "brightness(.7)",
-        }}
-      />
-      <img
-        style={{
-          position: "absolute",
-          width: "90%",
-          left: "5%",
-          top: "50%",
-          transform: "translateY(-50%)",
-        }}
-        src={`/public/joke_img/joke_${jokesIdx}.png`}
-      />
-    </div>
-  );
-};
-
-export default CrackerOpened;

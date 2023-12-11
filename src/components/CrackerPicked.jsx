@@ -4,6 +4,9 @@
 
 import { useState, useEffect } from "react";
 
+import { jokes } from "../constants/jokesData.js";
+
+const jokesIdx = Math.floor(Math.random() * jokes.length) + 1;
 const CrackerPicked = ({ setStage, color }) => {
   const [scaleX, setSetScaleX] = useState(1);
   const [scaleY, setSetScaleY] = useState(1);
@@ -11,20 +14,11 @@ const CrackerPicked = ({ setStage, color }) => {
   const [crackerBottom, setCrackerBottom] = useState("50%");
   const [pull, setPull] = useState(0);
 
-  console.log(pull);
-
   useEffect(() => {
     if (pull === 5) {
-      setCrackerTop((position) => position.replace("%", "") - 15 + "%");
+      setCrackerTop((position) => position.replace("%", "") - 22.5 + "%");
       setCrackerBottom(
-        (position) => Number(position.replace("%", "")) + 15 + "%"
-      );
-    } else if (pull < 5) {
-      setSetScaleX((x) => (x -= 0.05));
-      setSetScaleY((y) => (y += 0.05));
-      setCrackerTop((position) => position.replace("%", "") - 0.1 + "%");
-      setCrackerBottom(
-        (position) => Number(position.replace("%", "")) + 0.1 + "%"
+        (position) => Number(position.replace("%", "")) + 22.5 + "%"
       );
     }
   }, [pull]);
@@ -38,12 +32,24 @@ const CrackerPicked = ({ setStage, color }) => {
       }}
     >
       <img
+        style={{
+          position: "absolute",
+          width: "90%",
+          left: "5%",
+          top: "50%",
+          transform: "translateY(-50%)",
+          zIndex: pull === 5 ? 10 : -1
+        }}
+        src={`/public/joke_img/joke_${jokesIdx}.png`}
+      />
+      <img
         src="/Images/WebP/popping_bg.webp"
         style={{
           position: "relative",
           height: "100%",
           width: "100%",
           filter: pull === 5 ? "brightness(.6)" : "brightness(1)",
+          transition: "filter 3s cubic-bezier(.01,1,.32,.75)",
         }}
       />
       <div
@@ -60,7 +66,20 @@ const CrackerPicked = ({ setStage, color }) => {
               e.target.id === "bottom_cracker") &&
             pull < 5
           ) {
-            setPull((pull) => pull + 1);
+            setPull((pull) => {
+              pull += 1;
+              if (pull < 5) {
+                setSetScaleX((x) => (x -= 0.05));
+                setSetScaleY((y) => (y += 0.05));
+                setCrackerTop(
+                  (position) => position.replace("%", "") - 0.1 + "%"
+                );
+                setCrackerBottom(
+                  (position) => Number(position.replace("%", "")) + 0.1 + "%"
+                );
+              }
+              return pull;
+            });
           }
         }}
       >

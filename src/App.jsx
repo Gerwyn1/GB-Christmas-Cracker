@@ -6,8 +6,8 @@ import CrackerOpened from "./components/CrackerOpened";
 
 
 function App() {
-  const [stage, setStage] = useState("cracker picked");
-  const [color, setColor] = useState('r')
+  const [stage, setStage] = useState("pick a cracker");
+  const [color, setColor] = useState(null)
   
   return (
     <>
