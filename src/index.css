@@ -26,7 +26,19 @@ body {
   /* font-family: "Tangerine", sans-serif; */
 }
 
-@keyframes crackerAnimation {
+@keyframes squishStretch {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(0.8, 1.2);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+/* @keyframes crackerAnimation {
   0% {
     width: 15%;
     height: 30%;
@@ -39,7 +51,7 @@ body {
     width: 15%;
     height: 80%;
   }
-}
+} */
 
 /* Responsive Font Sizes */
 
