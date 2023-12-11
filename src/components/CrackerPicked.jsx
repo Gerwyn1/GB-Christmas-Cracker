@@ -20,25 +20,34 @@ const CrackerPicked = ({ setStage, color }) => {
           width: "100%",
         }}
       />
-      <div style={{ position: "relative", bottom: '50%', height: '100%' }}>
+      <div style={{ position: "relative",  transform:"translate(-2.5%, -105%) rotate(-22.5deg)", height:'100%' }}>
         <img
           src={`/public/GB_SPLIT/pop_top_${color}.webp`}
-          alt="cracker"
+          alt="cracker top"
           style={{
+            top:'27.1%',
+            left:'37.5%',
+            // transform:('translate(-50%, -50%)'),
             position: "absolute",
-            width: "15%",
-            bottom:'100%',
+            width: "20%",
+            height: "30%",
             cursor: "pointer",
+            // transform:('translateY(-400%)')
           }}
         />
         <img
           src={`/public/GB_SPLIT/pop_btm_${color}.webp`}
-          alt="cracker"
+          alt="cracker bottom"
           style={{
-            position: "absolute",
-            bottom:'86.5%',
-            width: "15%",
+            top:'50%',
+            left:'37.5%',
+            // transform:('translate(-50%, -50%)'),
+            position:'absolute',
+            width: "20%",
+            height: "30%",
             cursor: "pointer",
+            // transform:('translate(-100%, -324%)'),
+            // transform:('translateX(-10%)')
           }}
         />
       </div>
