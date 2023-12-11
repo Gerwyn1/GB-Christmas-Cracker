@@ -43,13 +43,13 @@ const CrackerPicked = ({ setStage, color }) => {
         src={`/public/joke_img/joke_${jokesIdx}.png`}
       />
       <img
-        src="/Images/WebP/popping_bg.webp"
+        src={pull === 5 ? "/Images/WebP/joke_bg.webp" : "/Images/WebP/popping_bg.webp"}
         style={{
           position: "relative",
           height: "100%",
           width: "100%",
           filter: pull === 5 ? "brightness(.6)" : "brightness(1)",
-          transition: "filter 3s cubic-bezier(.01,1,.32,.75)",
+          // transition: "filter 3s cubic-bezier(.01,1,.32,.75)",
         }}
       />
       <div
