@@ -38,6 +38,8 @@ const PickCracker = ({ setStage, setColor }) => {
     windowSize.height >= 1100 &&
     windowSize.height <= 1280;
 
+    const iPhoneXR = windowSize.width >= 375 && windowSize.width <= 414 && windowSize.height >= 812 && windowSize.height <= 896;
+
   useEffect(() => {
     const handleResize = () => {
       setWindowSize({
@@ -112,8 +114,8 @@ const PickCracker = ({ setStage, setColor }) => {
             ? "4%"
             : windowDifference >= 370 && windowSize.width < 350
             ? "5%"
-            : windowDifference >= 370 && windowSize.width > 350
-            ? "2%"
+            : windowDifference >= 370 && windowSize.width > 350 && windowSize.height <= 950
+            ? "5%"
             : "2%",
           zIndex: 9997,
           // transform: "rotate(0deg)",
