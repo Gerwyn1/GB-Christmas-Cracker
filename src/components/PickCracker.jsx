@@ -1,17 +1,13 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 /* eslint-disable react/no-unknown-property */
 
 // eslint-disable-next-line react/prop-types
-const PickCracker = ({ setStage, setColor }) => {
-  // const crackerPicked = useRef();
-
+const PickCracker = ({ setStage, setColor, color }) => {
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
   });
-
-  console.log(windowSize.width, windowSize.height);
 
   const windowDifference = windowSize.height - windowSize.width;
 
@@ -38,7 +34,11 @@ const PickCracker = ({ setStage, setColor }) => {
     windowSize.height >= 1100 &&
     windowSize.height <= 1280;
 
-    const iPhoneXR = windowSize.width >= 375 && windowSize.width <= 414 && windowSize.height >= 812 && windowSize.height <= 896;
+  // const iPhoneXR =
+  //   windowSize.width >= 375 &&
+  //   windowSize.width <= 414 &&
+  //   windowSize.height >= 812 &&
+  //   windowSize.height <= 896;
 
   useEffect(() => {
     const handleResize = () => {
@@ -62,7 +62,16 @@ const PickCracker = ({ setStage, setColor }) => {
     transform: "rotate(-10deg) translate3d(0, 0, 0)",
     backfaceVisibility: "hidden",
     perspective: "1000px",
+    zIndex: 14000,
   };
+
+  useEffect(() => {
+    if (color) {
+      setTimeout(() => {
+        setStage("cracker picked");
+      }, 850);
+    }
+  }, [color, setStage]);
 
   return (
     <div
@@ -102,21 +111,26 @@ const PickCracker = ({ setStage, setColor }) => {
           width: "16.5%",
           // height: "16.5%",
           right: "10%",
-          bottom: windowSize.width >= 5000 ? '5%' : microsoftSurfacePro
-            ? "1%"
-            : samgsungGalaxyNote5
-            ? "1%"
-            : galaxyFold
-            ? "6%"
-            : surfacePro7
-            ? "2%"
-            : windowDifference >= 370 && windowSize.width >= 1599
-            ? "4%"
-            : windowDifference >= 370 && windowSize.width < 350
-            ? "5%"
-            : windowDifference >= 370 && windowSize.width > 350 && windowSize.height <= 950
-            ? "5%"
-            : "2%",
+          bottom:
+            windowSize.width >= 5000
+              ? "5%"
+              : microsoftSurfacePro
+              ? "1%"
+              : samgsungGalaxyNote5
+              ? "1%"
+              : galaxyFold
+              ? "6%"
+              : surfacePro7
+              ? "2%"
+              : windowDifference >= 370 && windowSize.width >= 1599
+              ? "4%"
+              : windowDifference >= 370 && windowSize.width < 350
+              ? "5%"
+              : windowDifference >= 370 &&
+                windowSize.width > 350 &&
+                windowSize.height <= 950
+              ? "5%"
+              : "2%",
           zIndex: 9997,
           // transform: "rotate(0deg)",
         }}
@@ -127,7 +141,12 @@ const PickCracker = ({ setStage, setColor }) => {
         style={{
           position: "absolute",
           maxWidth: "32.5%",
-          left: windowSize.width >= 5000 ? '3%' : windowDifference >= 370 ? "2%" : "9%",
+          left:
+            windowSize.width >= 5000
+              ? "3%"
+              : windowDifference >= 370
+              ? "2%"
+              : "9%",
           bottom: windowDifference >= 370 ? "17.5%" : "16%",
           zIndex: 4999,
         }}
@@ -144,12 +163,13 @@ const PickCracker = ({ setStage, setColor }) => {
           zIndex: 9998,
           transform: "rotate(-10deg)",
           cursor: "pointer",
-          //
+          ...(color === "r" ? crackerAnimation : {}),
         }}
         src="/Images/WebP/pop_r.webp"
         onClick={() => {
-          setStage("cracker picked");
-          setColor("r");
+          if (!color) {
+            setColor("r");
+          }
         }}
       />
       {/* BLUE CRACKER */}
@@ -162,11 +182,13 @@ const PickCracker = ({ setStage, setColor }) => {
           zIndex: 9995,
           transform: "rotate(-18.5deg)",
           cursor: "pointer",
+          ...(color === "b" ? crackerAnimation : {}),
         }}
         src="/Images/WebP/pop_b.webp"
         onClick={() => {
-          setStage("cracker picked");
-          setColor("b");
+          if (!color) {
+            setColor("b");
+          }
         }}
       />
       {/* GREEN CRACKER */}
@@ -179,11 +201,13 @@ const PickCracker = ({ setStage, setColor }) => {
           zIndex: 9999,
           transform: "rotate(-30.5deg)",
           cursor: "pointer",
+          ...(color === "g" ? crackerAnimation : {}),
         }}
         src="/Images/WebP/pop_g.webp"
         onClick={() => {
-          setStage("cracker picked");
-          setColor("g");
+          if (!color) {
+            setColor("g");
+          }
         }}
         useMap="#image-map"
       />
@@ -197,11 +221,13 @@ const PickCracker = ({ setStage, setColor }) => {
           zIndex: 9998,
           transform: "rotate(-47.5deg)",
           cursor: "pointer",
+          ...(color === "y" ? crackerAnimation : {}),
         }}
         src="/Images/WebP/pop_y.webp"
         onClick={() => {
-          setStage("cracker picked");
-          setColor("y");
+          if (!color) {
+            setColor("y");
+          }
         }}
       />
     </div>

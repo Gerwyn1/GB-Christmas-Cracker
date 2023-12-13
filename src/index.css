@@ -23,7 +23,7 @@ body {
   display: flex;
   margin: 0;
   padding: 0;
-  /* font-family: "Tangerine", sans-serif; */
+  font-family: "Tangerine", sans-serif;
 }
 
 /* .face:hover {

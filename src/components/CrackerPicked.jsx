@@ -3,8 +3,29 @@
 // eslint-disable-next-line no-unused-vars
 
 import { useState, useEffect } from "react";
+import Modal from "react-bootstrap/Modal";
 
 import { jokes } from "../constants/jokesData.js";
+// import { Button } from "react-bootstrap";
+import {
+  EmailIcon,
+  EmailShareButton,
+  FacebookIcon,
+  FacebookShareButton,
+  TelegramIcon,
+  TelegramShareButton,
+  TwitterIcon,
+  TwitterShareButton,
+  WhatsappIcon,
+  WhatsappShareButton,
+} from "react-share";
+
+// const shareOnWhatsApp = () => {
+//   const url = encodeURIComponent("https://example.com"); // Replace with your URL
+//   const whatsappShareUrl = `https://wa.me/?text=${url}`;
+
+//   window.open(whatsappShareUrl, "_blank", "width=600,height=400");
+// };
 
 const jokesIdx = Math.floor(Math.random() * jokes.length) + 1;
 const CrackerPicked = ({ setStage, color }) => {
@@ -13,6 +34,11 @@ const CrackerPicked = ({ setStage, color }) => {
   const [crackerTop, setCrackerTop] = useState("23.6%");
   const [crackerBottom, setCrackerBottom] = useState("50%");
   const [pull, setPull] = useState(0);
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   useEffect(() => {
     if (pull === 5) {
@@ -31,19 +57,113 @@ const CrackerPicked = ({ setStage, color }) => {
         overflow: "hidden",
       }}
     >
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title style={{ color: "#B51F1C", fontSize: "2.25rem" }}>
+            Share via a link!
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <WhatsappShareButton url={"www.example.com"}>
+            <WhatsappIcon />
+          </WhatsappShareButton>
+
+          <TwitterShareButton
+            url={"www.example.com"}
+            style={{ marginLeft: "15px" }}
+          >
+            <TwitterIcon />
+          </TwitterShareButton>
+          <FacebookShareButton
+            url={"www.example.com"}
+            style={{ marginLeft: "15px" }}
+          >
+            <FacebookIcon />
+          </FacebookShareButton>
+          <TelegramShareButton
+            url={"www.example.com"}
+            style={{ marginLeft: "15px" }}
+          >
+            <TelegramIcon />
+          </TelegramShareButton>
+          <EmailShareButton
+            url={"www.example.com"}
+            style={{ marginLeft: "15px" }}
+          >
+            <EmailIcon />
+          </EmailShareButton>
+        </Modal.Body>
+        {/* <Modal.Footer>
+          <Button
+          variant="secondary"
+            style={{
+              color: "#B51F1C",
+              fontSize: "1.5rem",
+              backgroundColor: "#fff",
+              border: "1px solid #B51F1C",
+            }}
+            onClick={handleClose}
+          >
+            Close
+          </Button>
+        </Modal.Footer> */}
+      </Modal>
       <img
+        id="joke-img"
+        className="joke-img"
+        onMouseMove={(event) => {
+          const image = event.target;
+          const boundingRect = image.getBoundingClientRect();
+
+          const relativeX =
+            ((event.clientX - boundingRect.left) / image.width) * 100;
+          const relativeY =
+            ((event.clientY - boundingRect.top) / image.height) * 100;
+          if (
+            relativeX >= 72 &&
+            relativeX <= 94 &&
+            relativeY >= 81 &&
+            relativeY <= 91
+          ) {
+            image.style.cursor = "pointer";
+          } else {
+            image.style.cursor = "default";
+          }
+        }}
+        onClick={(event) => {
+          const image = event.target;
+          const boundingRect = image.getBoundingClientRect();
+
+          const relativeX =
+            ((event.clientX - boundingRect.left) / image.width) * 100;
+          const relativeY =
+            ((event.clientY - boundingRect.top) / image.height) * 100;
+
+          if (
+            relativeX >= 72 &&
+            relativeX <= 94 &&
+            relativeY >= 81 &&
+            relativeY <= 91
+          ) {
+            handleShow();
+          }
+        }}
         style={{
           position: "absolute",
           width: "90%",
           left: "5%",
           top: "50%",
           transform: "translateY(-50%)",
-          zIndex: pull === 5 ? 10 : -1
+          zIndex: pull === 5 ? 10 : -1,
         }}
         src={`/public/joke_img/joke_${jokesIdx}.png`}
       />
       <img
-        src={pull === 5 ? "/Images/WebP/joke_bg.webp" : "/Images/WebP/popping_bg.webp"}
+        src={
+          pull === 5
+            ? "/Images/WebP/joke_bg.webp"
+            : "/Images/WebP/popping_bg.webp"
+        }
         style={{
           position: "relative",
           height: "100%",
