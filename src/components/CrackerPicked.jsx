@@ -67,29 +67,16 @@ const CrackerPicked = ({ setStage, color }) => {
           <WhatsappShareButton url={"www.example.com"}>
             <WhatsappIcon />
           </WhatsappShareButton>
-
-          <TwitterShareButton
-            url={"www.example.com"}
-            style={{ marginLeft: "15px" }}
-          >
+          <TwitterShareButton url={"www.example.com"}>
             <TwitterIcon />
           </TwitterShareButton>
-          <FacebookShareButton
-            url={"www.example.com"}
-            style={{ marginLeft: "15px" }}
-          >
+          <FacebookShareButton url={"www.example.com"}>
             <FacebookIcon />
           </FacebookShareButton>
-          <TelegramShareButton
-            url={"www.example.com"}
-            style={{ marginLeft: "15px" }}
-          >
+          <TelegramShareButton url={"www.example.com"}>
             <TelegramIcon />
           </TelegramShareButton>
-          <EmailShareButton
-            url={"www.example.com"}
-            style={{ marginLeft: "15px" }}
-          >
+          <EmailShareButton url={"www.example.com"}>
             <EmailIcon />
           </EmailShareButton>
         </Modal.Body>
