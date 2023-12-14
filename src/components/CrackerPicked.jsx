@@ -4,9 +4,9 @@
 
 import { useState, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
+import QRCode from "react-qr-code";
 
 import { jokes } from "../constants/jokesData.js";
-// import { Button } from "react-bootstrap";
 import {
   EmailIcon,
   EmailShareButton,
@@ -80,20 +80,22 @@ const CrackerPicked = ({ setStage, color }) => {
             <EmailIcon />
           </EmailShareButton>
         </Modal.Body>
-        {/* <Modal.Footer>
-          <Button
-          variant="secondary"
+        <Modal.Footer>
+          <div
             style={{
-              color: "#B51F1C",
-              fontSize: "1.5rem",
-              backgroundColor: "#fff",
-              border: "1px solid #B51F1C",
+              // maxWidth: 64,
+              display: "inline-block",
+              marginRight: "auto",
             }}
-            onClick={handleClose}
           >
-            Close
-          </Button>
-        </Modal.Footer> */}
+            <QRCode
+              size={256}
+              style={{ height: "auto", maxWidth: "100%" }}
+              value={"Gardens by the Bay -> Brochure Link?"}
+              viewBox={`0 0 256 256`}
+            />
+          </div>
+        </Modal.Footer>
       </Modal>
       <img
         id="joke-img"
