@@ -80,6 +80,11 @@ const CrackerPicked = ({ setStage, color }) => {
             <EmailIcon />
           </EmailShareButton>
         </Modal.Body>
+        <Modal.Body>
+          <Modal.Title style={{ color: "#B51F1C", fontSize: "2.25rem" }}>
+            Scan QR Code!
+          </Modal.Title>
+        </Modal.Body>
         <Modal.Footer>
           <div
             style={{
@@ -91,7 +96,7 @@ const CrackerPicked = ({ setStage, color }) => {
             <QRCode
               size={256}
               style={{ height: "auto", maxWidth: "100%" }}
-              value={"Gardens by the Bay -> Brochure Link?"}
+              value="https://www.gardensbythebay.com.sg/en.html"
               viewBox={`0 0 256 256`}
             />
           </div>
@@ -108,6 +113,7 @@ const CrackerPicked = ({ setStage, color }) => {
             ((event.clientX - boundingRect.left) / image.width) * 100;
           const relativeY =
             ((event.clientY - boundingRect.top) / image.height) * 100;
+          console.log({ relativeX, relativeY });
           if (
             relativeX >= 72 &&
             relativeX <= 94 &&
@@ -226,5 +232,3 @@ const CrackerPicked = ({ setStage, color }) => {
 };
 
 export default CrackerPicked;
-
-// animation: "crackerAnimation 2s infinite"
