@@ -104,19 +104,25 @@ const CrackerPicked = ({ setStage, color }) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <WhatsappShareButton url={"www.example.com"}>
+          <WhatsappShareButton
+            url={"https://preview.blaklabs.com/xmas2023_gb/"}
+          >
             <WhatsappIcon />
           </WhatsappShareButton>
-          <TwitterShareButton url={"www.example.com"}>
+          <TwitterShareButton url={"https://preview.blaklabs.com/xmas2023_gb/"}>
             <TwitterIcon />
           </TwitterShareButton>
-          <FacebookShareButton url={"www.example.com"}>
+          <FacebookShareButton
+            url={"https://preview.blaklabs.com/xmas2023_gb/"}
+          >
             <FacebookIcon />
           </FacebookShareButton>
-          <TelegramShareButton url={"www.example.com"}>
+          <TelegramShareButton
+            url={"https://preview.blaklabs.com/xmas2023_gb/"}
+          >
             <TelegramIcon />
           </TelegramShareButton>
-          <EmailShareButton url={"www.example.com"}>
+          <EmailShareButton url={"https://preview.blaklabs.com/xmas2023_gb/"}>
             <EmailIcon />
           </EmailShareButton>
         </Modal.Body>
@@ -154,7 +160,7 @@ const CrackerPicked = ({ setStage, color }) => {
                     ? "65%"
                     : "85%",
               }}
-              value="https://www.gardensbythebay.com.sg/en.html"
+              value="https://preview.blaklabs.com/xmas2023_gb/"
               viewBox={`0 0 256 256`}
             />
           </div>
@@ -209,13 +215,13 @@ const CrackerPicked = ({ setStage, color }) => {
           transform: "translateY(-50%)",
           zIndex: pull === 5 ? 10 : -1,
         }}
-        src={`/public/joke_img/joke_${jokesIdx}.png`}
+        src={`joke_img/joke_${jokesIdx}.png`}
       />
       <img
         src={
           pull === 5
-            ? "/Images/WebP/joke_bg.webp"
-            : "/Images/WebP/popping_bg.webp"
+            ? "Images/WebP/joke_bg.webp"
+            : "Images/WebP/popping_bg.webp"
         }
         style={{
           position: "relative",
@@ -259,7 +265,7 @@ const CrackerPicked = ({ setStage, color }) => {
       >
         <img
           id="top_cracker"
-          src={`/public/GB_SPLIT/pop_top_${color}.webp`}
+          src={`GB_SPLIT/pop_top_${color}.webp`}
           alt="cracker top"
           style={{
             top: crackerTop,
@@ -273,7 +279,7 @@ const CrackerPicked = ({ setStage, color }) => {
         />
         <img
           id="bottom_cracker"
-          src={`/public/GB_SPLIT/pop_btm_${color}.webp`}
+          src={`GB_SPLIT/pop_btm_${color}.webp`}
           alt="cracker bottom"
           style={{
             top: crackerBottom,

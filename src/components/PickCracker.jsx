@@ -83,7 +83,7 @@ const PickCracker = ({ setStage, setColor, color }) => {
       }}
     >
       <img
-        src={"/Images/WebP/cover_bg.webp"}
+        src={"Images/WebP/cover_bg.webp"}
         style={{
           height: "100%",
           width: "100%",
@@ -102,7 +102,7 @@ const PickCracker = ({ setStage, setColor, color }) => {
           height: "40%",
           transform: "rotate(-25deg)",
         }}
-        src="/newImages/fixed-bag.png"
+        src="newImages/fixed-bag.png"
       />
       {/* SPEAR AND SWORD */}
       <img
@@ -134,7 +134,7 @@ const PickCracker = ({ setStage, setColor, color }) => {
           zIndex: 9997,
           // transform: "rotate(0deg)",
         }}
-        src="/newImages/spear-sword.png"
+        src="newImages/spear-sword.png"
       />
       {/* HAMMER */}
       <img
@@ -150,7 +150,7 @@ const PickCracker = ({ setStage, setColor, color }) => {
           bottom: windowDifference >= 370 ? "17.5%" : "16%",
           zIndex: 4999,
         }}
-        src="/Archive/hammer.png"
+        src="Archive/hammer.png"
       />
 
       {/* RED CRACKER */}
@@ -165,7 +165,7 @@ const PickCracker = ({ setStage, setColor, color }) => {
           cursor: "pointer",
           ...(color === "r" ? crackerAnimation : {}),
         }}
-        src="/Images/WebP/pop_r.webp"
+        src="Images/WebP/pop_r.webp"
         onClick={() => {
           if (!color) {
             setColor("r");
@@ -184,7 +184,7 @@ const PickCracker = ({ setStage, setColor, color }) => {
           cursor: "pointer",
           ...(color === "b" ? crackerAnimation : {}),
         }}
-        src="/Images/WebP/pop_b.webp"
+        src="Images/WebP/pop_b.webp"
         onClick={() => {
           if (!color) {
             setColor("b");
@@ -203,7 +203,7 @@ const PickCracker = ({ setStage, setColor, color }) => {
           cursor: "pointer",
           ...(color === "g" ? crackerAnimation : {}),
         }}
-        src="/Images/WebP/pop_g.webp"
+        src="Images/WebP/pop_g.webp"
         onClick={() => {
           if (!color) {
             setColor("g");
@@ -223,7 +223,7 @@ const PickCracker = ({ setStage, setColor, color }) => {
           cursor: "pointer",
           ...(color === "y" ? crackerAnimation : {}),
         }}
-        src="/Images/WebP/pop_y.webp"
+        src="Images/WebP/pop_y.webp"
         onClick={() => {
           if (!color) {
             setColor("y");
