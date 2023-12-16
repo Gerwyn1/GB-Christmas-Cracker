@@ -166,57 +166,59 @@ const CrackerPicked = ({ setStage, color }) => {
           </div>
         </Modal.Footer>
       </Modal>
-      <img
-        id="joke-img"
-        className="joke-img"
-        onMouseMove={(event) => {
-          const image = event.target;
-          const boundingRect = image.getBoundingClientRect();
+      {pull === 5 && (
+        <img
+          id="joke-img"
+          className="joke-img"
+          onMouseMove={(event) => {
+            const image = event.target;
+            const boundingRect = image.getBoundingClientRect();
 
-          const relativeX =
-            ((event.clientX - boundingRect.left) / image.width) * 100;
-          const relativeY =
-            ((event.clientY - boundingRect.top) / image.height) * 100;
-          console.log({ relativeX, relativeY });
-          if (
-            relativeX >= 72 &&
-            relativeX <= 94 &&
-            relativeY >= 81 &&
-            relativeY <= 91
-          ) {
-            image.style.cursor = "pointer";
-          } else {
-            image.style.cursor = "default";
-          }
-        }}
-        onClick={(event) => {
-          const image = event.target;
-          const boundingRect = image.getBoundingClientRect();
+            const relativeX =
+              ((event.clientX - boundingRect.left) / image.width) * 100;
+            const relativeY =
+              ((event.clientY - boundingRect.top) / image.height) * 100;
+            console.log({ relativeX, relativeY });
+            if (
+              relativeX >= 72 &&
+              relativeX <= 94 &&
+              relativeY >= 81 &&
+              relativeY <= 91
+            ) {
+              image.style.cursor = "pointer";
+            } else {
+              image.style.cursor = "default";
+            }
+          }}
+          onClick={(event) => {
+            const image = event.target;
+            const boundingRect = image.getBoundingClientRect();
 
-          const relativeX =
-            ((event.clientX - boundingRect.left) / image.width) * 100;
-          const relativeY =
-            ((event.clientY - boundingRect.top) / image.height) * 100;
+            const relativeX =
+              ((event.clientX - boundingRect.left) / image.width) * 100;
+            const relativeY =
+              ((event.clientY - boundingRect.top) / image.height) * 100;
 
-          if (
-            relativeX >= 72 &&
-            relativeX <= 94 &&
-            relativeY >= 81 &&
-            relativeY <= 91
-          ) {
-            handleShow();
-          }
-        }}
-        style={{
-          position: "absolute",
-          width: "90%",
-          left: "5%",
-          top: "50%",
-          transform: "translateY(-50%)",
-          zIndex: pull === 5 ? 10 : -1,
-        }}
-        src={`joke_img/joke_${jokesIdx}.png`}
-      />
+            if (
+              relativeX >= 72 &&
+              relativeX <= 94 &&
+              relativeY >= 81 &&
+              relativeY <= 91
+            ) {
+              handleShow();
+            }
+          }}
+          style={{
+            position: "absolute",
+            width: "90%",
+            left: "5%",
+            top: "50%",
+            transform: "translateY(-50%)",
+            zIndex: 10,
+          }}
+          src={`joke_img/joke_${jokesIdx}.png`}
+        />
+      )}
       <img
         src={
           pull === 5
