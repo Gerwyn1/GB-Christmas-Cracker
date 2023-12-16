@@ -19,6 +19,7 @@ import {
   WhatsappIcon,
   WhatsappShareButton,
 } from "react-share";
+import useScreenOrientation from "../@hooks/useOrientation.js";
 
 // const shareOnWhatsApp = () => {
 //   const url = encodeURIComponent("https://example.com"); // Replace with your URL
@@ -49,6 +50,34 @@ const CrackerPicked = ({ setStage, color }) => {
     }
   }, [pull]);
 
+  const oreintation = useScreenOrientation();
+  console.log(oreintation);
+
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  const windowDifference = Math.abs(windowSize.height - windowSize.width);
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    console.log(windowDifference);
+
+    // Add event listener for window resize
+    window.addEventListener("resize", handleResize);
+
+    // Initial cleanup to remove the event listener
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <div
       style={{
@@ -57,9 +86,20 @@ const CrackerPicked = ({ setStage, color }) => {
         overflow: "hidden",
       }}
     >
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title style={{ color: "#B51F1C", fontSize: "2.25rem" }}>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        size="lg"
+        aria-labelledby="example-modal-sizes-title-lg"
+      >
+        <Modal.Header>
+          <Modal.Title
+            id="example-modal-sizes-title-lg"
+            style={{
+              color: "#B51F1C",
+              fontSize: "2.25rem",
+            }}
+          >
             Share via a link!
           </Modal.Title>
         </Modal.Header>
@@ -80,22 +120,40 @@ const CrackerPicked = ({ setStage, color }) => {
             <EmailIcon />
           </EmailShareButton>
         </Modal.Body>
-        <Modal.Body>
-          <Modal.Title style={{ color: "#B51F1C", fontSize: "2.25rem" }}>
+        <Modal.Header>
+          <Modal.Title
+            id="example-modal-sizes-title-lg"
+            style={{
+              color: "#B51F1C",
+              fontSize: "2.25rem",
+            }}
+          >
             Scan QR Code!
           </Modal.Title>
-        </Modal.Body>
+        </Modal.Header>
         <Modal.Footer>
           <div
             style={{
-              // maxWidth: 64,
-              display: "inline-block",
-              marginRight: "auto",
+              display: "block",
+              margin: "auto",
+              width: "60%",
             }}
           >
             <QRCode
               size={256}
-              style={{ height: "auto", maxWidth: "100%" }}
+              style={{
+                height: "100%",
+                width:
+                  oreintation === "landscape-primary" &&
+                  windowDifference >= 250 &&
+                  windowDifference <= 400
+                    ? "65%"
+                    : oreintation === "portrait-primary" &&
+                      windowDifference >= 250 &&
+                      windowDifference <= 400
+                    ? "65%"
+                    : "85%",
+              }}
               value="https://www.gardensbythebay.com.sg/en.html"
               viewBox={`0 0 256 256`}
             />
@@ -168,6 +226,7 @@ const CrackerPicked = ({ setStage, color }) => {
         }}
       />
       <div
+        className="fade-in"
         style={{
           position: "relative",
           transform: `translate(-2.5%, -105%) rotate(-22.5deg) scale(${
